@@ -145,6 +145,12 @@
             .hamburger-btn { display: block !important; }
         }
 
+        @media (max-width: 640px) {
+            .topbar { padding: 0 16px; }
+            .content-area { padding: 0 16px 24px 16px; }
+            .icon-btn { width: 36px; height: 36px; font-size: 0.9rem; }
+        }
+
         /* OVERLAYS & TOGGLES */
         .sidebar-overlay {
             position: fixed; inset: 0; background: rgba(0,0,0,0.5); backdrop-filter: blur(2px);
@@ -152,6 +158,8 @@
         }
         .sidebar-overlay.active { display: block; opacity: 1; }
         .hamburger-btn { display: none; font-size: 1.5rem; color: var(--text-main); cursor: pointer; background: none; border: none; }
+        
+        #settings-drawer.active { right: 0 !important; }
 
         /* SIDEBAR NAVIGATION */
         .nav-item {
@@ -281,36 +289,36 @@
 
     <div class="main-wrapper">
         <header class="topbar">
-            <div class="flex items-center gap-4">
+            <div class="flex items-center gap-3 lg:gap-4 shrink-0">
                 <button class="hamburger-btn" id="sidebar-toggle"><i class="fas fa-bars"></i></button>
-                <div class="hidden md:flex items-center rounded-xl px-4 py-3 w-80 transition-colors focus-within:ring-2 ring-amber-500" style="background: var(--card-bg); border: 1px solid var(--border-color);">
+                <div class="hidden md:flex items-center rounded-xl px-4 py-3 w-48 lg:w-80 transition-colors focus-within:ring-2 ring-amber-500" style="background: var(--card-bg); border: 1px solid var(--border-color);">
                     <i class="fas fa-search text-[var(--text-muted)] mr-3"></i>
-                    <input type="text" placeholder="Search batches, employees, or items..." class="bg-transparent border-none outline-none w-full text-sm font-medium text-[var(--text-main)] placeholder-[var(--text-muted)]">
+                    <input type="text" placeholder="Search..." class="bg-transparent border-none outline-none w-full text-sm font-medium text-[var(--text-main)] placeholder-[var(--text-muted)]">
                 </div>
             </div>
 
-            <div class="flex items-center gap-3 md:gap-5">
+            <div class="flex items-center gap-2 sm:gap-3 lg:gap-5">
                 <button onclick="toggleSettings()" class="icon-btn" title="Open Controls"><i class="fas fa-sliders-h"></i></button>
-                <button class="icon-btn" id="rtl-toggle" title="Toggle RTL"><i class="fas fa-align-right"></i></button>
+                <button class="icon-btn hidden lg:flex" id="rtl-toggle" title="Toggle RTL"><i class="fas fa-align-right"></i></button>
                 <button class="icon-btn" id="theme-toggle" title="Toggle Dark Mode"><i class="fas fa-moon"></i></button>
                 
                 <div class="relative cursor-pointer group">
                     <button class="icon-btn relative">
                         <i class="fas fa-exclamation-circle"></i>
-                        <span class="absolute top-2 right-2 w-2.5 h-2.5 bg-red-500 rounded-full border-2 border-[var(--card-bg)]"></span>
+                        <span class="absolute top-1 right-1 w-2 h-2 sm:top-2 sm:right-2 sm:w-2.5 sm:h-2.5 bg-red-500 rounded-full border-2 border-[var(--card-bg)]"></span>
                     </button>
                 </div>
 
-                <div class="w-px h-8 mx-1 bg-[var(--border-color)]"></div>
+                <div class="w-px h-6 sm:h-8 mx-0.5 sm:mx-1 bg-[var(--border-color)]"></div>
                 
-                <div class="flex items-center gap-3 cursor-pointer bg-[var(--card-bg)] border border-[var(--border-color)] pl-2 pr-4 py-1.5 rounded-full hover:border-amber-500 transition-colors">
-                    <div class="w-8 h-8 rounded-full bg-black dark:bg-white flex items-center justify-center text-white dark:text-black font-bold text-xs">
+                <div class="flex items-center gap-2 sm:gap-3 cursor-pointer bg-[var(--card-bg)] border border-[var(--border-color)] p-1 sm:pl-2 sm:pr-4 sm:py-1.5 rounded-full hover:border-amber-500 transition-colors">
+                    <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-black dark:bg-white flex items-center justify-center text-white dark:text-black font-bold text-[10px] sm:text-xs">
                         SYS
                     </div>
-                    <div class="hidden md:block text-left">
+                    <div class="hidden lg:block text-left">
                         <p class="text-sm font-bold text-[var(--text-main)] leading-tight">Admin Level 1</p>
                     </div>
-                    <i class="fas fa-chevron-down text-xs text-[var(--text-muted)] ml-2"></i>
+                    <i class="fas fa-chevron-down text-[10px] sm:text-xs text-[var(--text-muted)] pr-1 sm:pr-0 sm:ml-2"></i>
                 </div>
             </div>
         </header>
